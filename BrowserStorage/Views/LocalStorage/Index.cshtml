@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Local Storage";
+}
+
+<div class="container col-4">
+    <div class="card shadow-sm m-5">
+        <div class="card-body">
+            <h3 class="card-title text-center mb-4">Local Storage</h3>
+            <form id="LocalStorageForm" method="post">
+                <div class="form-group">
+                    <input id="FirstName" class="form-control" placeholder="Enter First Name" />
+                </div>
+                <div class="form-group">
+                    <input id="LastName" class="form-control" placeholder="Enter Last Name" />
+                </div>
+                <div class="d-flex justify-content-center mb-1">
+                    <button type="button" onclick="SaveLocalStorage()" class="btn btn-primary">Save Data</button>
+                </div>
+                <div class="d-flex justify-content-center mb-1">
+                    <button type="button" onclick="GetLocalStorage()" class="btn btn-primary">Get Data</button>
+                </div>
+                <div class="form-group mb-3">
+                    <label id="LblFirstName"></label>
+                    <label id="LblLastName"></label>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function SaveLocalStorage() {
+        // Local Storage setItem method
+        var firstName = document.getElementById('FirstName').value;
+        localStorage.setItem('FirstName', firstName);
+        var lastName = document.getElementById('LastName').value;
+        localStorage.setItem('LastName', lastName);
+    }
+
+    function GetLocalStorage() {
+        // Local Storage getItem method
+        var firstName = localStorage.getItem('FirstName');
+        document.getElementById('LblFirstName').textContent = firstName;
+        var lastName = localStorage.getItem('LastName');
+        document.getElementById('LblLastName').textContent = lastName;
+    }
+</script>

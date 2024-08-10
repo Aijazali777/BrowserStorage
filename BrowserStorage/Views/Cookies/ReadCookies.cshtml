@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Cookies Storage";
+}
+
+<div class="container col-4">
+    <div class="card shadow-sm m-5">
+        <div class="card-body">
+            <h3 class="card-title text-center mb-4">Cookies Storage</h3>
+            <form id="CookiesStorageForm" method="get">
+                <div class="form-group">
+                    <input id="Phone" class="form-control" placeholder="Enter phone number" />
+                </div>
+                <input type="hidden" id="values" name="values" />
+                <div class="d-flex justify-content-center mb-2">
+                    <button type="button" onclick="SaveCookiesStorage()" class="btn btn-primary">Save Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function SaveCookiesStorage() {
+        var phoneData = {
+            Key: 'PhoneNumber',
+            Value: document.getElementById('Phone').value
+        }
+
+        var jasonPhoneData = JSON.stringify(phoneData);
+        document.getElementById('values').value = jasonPhoneData;
+        document.getElementById('CookiesStorageForm').submit();
+    }
+
+    function GetCookiesStorage() {
+        var phone = @ViewBag.PhoneNumber
+        document.getElementById('LblPhone').textContent = phone;
+    }
+</script>
